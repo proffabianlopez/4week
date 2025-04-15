@@ -6,7 +6,7 @@
 
 ## Pensar en la opción de Bloqueo de intentos
 
-## Trabajo opcional 
+## Trabajo opcional
 
 ## Se deberá crear una rama con el siguiente nombre: dev_formregistro_nombrealumno
 
@@ -33,10 +33,11 @@
     - Debera tener un control de información de lo que sucede almacenado en un archivo que se llame log.dat
 
 ### Diseño optativo, sugerencias:
-    - Fecha formato dd/mm/aaaa hh:mm:ss 
+
+    - Fecha formato dd/mm/aaaa hh:mm:ss
     - Usuario
     - Acción (Tener algun tipo de codigo o leyenda para una fácil,rápida comprensión de lo sucedido en tiempo real).
 
 ### Les deseo un buen fin de semana y por favor practiquen.
-### Suban las ramas en caso de consulta.
 
+### Suban las ramas en caso de consulta.
