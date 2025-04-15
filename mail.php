@@ -31,7 +31,9 @@ $contenido = '
     </div>
 </body>
 </html>';
-
+$email=$_POST["email"];
+$nombre=$_POST["name"];
+$password=$_POST["password"];
 try{
   if (!file_exists($configuracion)) 
   {
