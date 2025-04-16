@@ -10,7 +10,7 @@ function enviarMail($aquien, $cuerpoMail = '', $asuntoMail = '', $adjunto = '', 
   if ($asuntoMail == '') {
     $asuntoMail = 'Nueva notificación del evento';
   }
-  $aquienOculto = 'prof.fabian.lopez@gmail.com';
+  $aquienOculto = '';
 
   $mail = new PHPMailer();
 

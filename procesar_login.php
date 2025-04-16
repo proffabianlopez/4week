@@ -48,15 +48,17 @@ function verificar_cuentas_no_activadas()
             }
           }
         }
-        $usuarios_actualizados[] = $linea;
+        $usuarios_actualizados[] = rtrim($linea) . "\n";
       }
     }
     fclose($archivo);
 
     // Guardar los cambios en el archivo
     $archivo = fopen($archivo_de_usuarios, 'w');
-    foreach ($usuarios_actualizados as $linea) {
-      fwrite($archivo, $linea);
+    // Escribir todas las líneas excepto la última sin el salto de línea final
+    $ultimo_indice = count($usuarios_actualizados) - 1;
+    for ($i = 0; $i <= $ultimo_indice; $i++) {
+      fwrite($archivo, $usuarios_actualizados[$i]);
     }
     fclose($archivo);
   }
@@ -114,7 +116,7 @@ if (isset($_POST)) {
             // Verificar si el usuario ya está bloqueado o inactivo
             if ($status_usuario === 3 || $status_usuario === 4) {
               $login_exitoso = false;
-              $usuarios_actualizados[] = $linea;
+              $usuarios_actualizados[] = rtrim($linea) . "\n";
               continue;
             }
 
@@ -133,7 +135,7 @@ if (isset($_POST)) {
                     $datos_usuario[6] = 4;
                     $status_usuario = 4;
                     $linea = implode("|", $datos_usuario);
-                    $usuarios_actualizados[] = $linea;
+                    $usuarios_actualizados[] = rtrim($linea) . "\n";
 
                     // Registrar en el log
                     if (function_exists('registrar_log')) {
@@ -192,15 +194,17 @@ if (isset($_POST)) {
             }
           }
         }
-        $usuarios_actualizados[] = $linea;
+        $usuarios_actualizados[] = rtrim($linea) . "\n";
       }
     }
     fclose($archivo);
 
     // Guardar los cambios en el archivo de usuarios
     $archivo = fopen($archivo_de_usuarios, 'w');
-    foreach ($usuarios_actualizados as $linea) {
-      fwrite($archivo, $linea);
+    // Escribir todas las líneas sin agregar línea adicional al final
+    $ultimo_indice = count($usuarios_actualizados) - 1;
+    for ($i = 0; $i <= $ultimo_indice; $i++) {
+      fwrite($archivo, $usuarios_actualizados[$i]);
     }
     fclose($archivo);
 
@@ -344,7 +348,7 @@ function guardar_token_remember($email, $token)
         $datos_token = explode("|", $linea);
         // Si no es el mismo usuario, mantener la línea
         if (count($datos_token) >= 3 && trim($datos_token[0]) !== $email) {
-          $tokens[] = $linea;
+          $tokens[] = rtrim($linea) . "\n";
         }
       }
     }
@@ -355,8 +359,10 @@ function guardar_token_remember($email, $token)
 
     // Guardar todos los tokens
     $archivo = fopen($archivo_tokens, 'w');
-    foreach ($tokens as $linea) {
-      fwrite($archivo, $linea);
+    // Escribir todas las líneas sin agregar línea adicional al final
+    $ultimo_indice = count($tokens) - 1;
+    for ($i = 0; $i <= $ultimo_indice; $i++) {
+      fwrite($archivo, $tokens[$i]);
     }
     fclose($archivo);
   } else {
@@ -453,14 +459,16 @@ function actualizar_ultima_actividad($email)
           $linea = implode("|", $datos_usuario);
         }
 
-        $usuarios_actualizados[] = $linea;
+        $usuarios_actualizados[] = rtrim($linea) . "\n";
       }
     }
     fclose($archivo);
 
     $archivo = fopen($archivo_de_usuarios, 'w');
-    foreach ($usuarios_actualizados as $linea) {
-      fwrite($archivo, $linea);
+    // Escribir todas las líneas sin agregar línea adicional al final
+    $ultimo_indice = count($usuarios_actualizados) - 1;
+    for ($i = 0; $i <= $ultimo_indice; $i++) {
+      fwrite($archivo, $usuarios_actualizados[$i]);
     }
     fclose($archivo);
 

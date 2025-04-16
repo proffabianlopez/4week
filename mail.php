@@ -12,6 +12,7 @@ if (isset($_POST)) {
   $code_verif = cripto_6(8);
   $fecha_actual = date('Y-m-d H:i:s');
   $status = 0;
+  $intentos = 0;
 
   // Validaciones
   if (!$username || empty(trim($username))) {
@@ -101,7 +102,7 @@ if (isset($_POST)) {
         $password_encriptado = password_hash($password, PASSWORD_BCRYPT);
 
         // Guardar datos del usuario en el archivo Usuarios.dat
-        $datos_usuario = $username . "|" . $user . "|" . $password_encriptado . "|" . $code_verif . "|" . "" . "|" . $fecha_actual . "|" . $status . PHP_EOL;
+        $datos_usuario = $username . "|" . $user . "|" . $password_encriptado . "|" . $code_verif . "|" . "" . "|" . $fecha_actual . "|" . $status . "|" . $intentos . PHP_EOL;
         $archivo_usuarios = fopen($archivo_de_usuarios, 'a+') or die("No se pudo abrir el archivo de usuarios");
         fwrite($archivo_usuarios, $datos_usuario);
         fclose($archivo_usuarios);

@@ -12,11 +12,11 @@ if (isset($_POST['codigo'])) {
     $datos_usuario = explode('|', $linea);
 
     if (trim($datos_usuario[3]) == $validar_codigo) {
+      $email = $datos_usuario[1];
       $datos_usuario[4] = date("Y-m-d H:i:s");
       $datos_usuario[5] = date("Y-m-d H:i:s");
       $datos_usuario[6] = 1;
-      $email = $datos_usuario[1];
-      $linea = implode('|', $datos_usuario) . PHP_EOL;
+      $linea = implode('|', $datos_usuario);
       $validacion = true;
     }
     $actualizar_lineas[] = $linea;
