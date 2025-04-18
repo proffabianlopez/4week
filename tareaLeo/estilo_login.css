@@ -1,7 +1,19 @@
 body {
-    background-color: lightgray;
-    
+background-color: antiquewhite;
 
 
 }
 
+table{
+    margin: 0;
+}
+
+input{
+    background-color: lightgray;
+    color: black;
+
+}
+
+.botones{
+    text-align: center;
+}

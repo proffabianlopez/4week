@@ -10,15 +10,20 @@
 
     <h1>Iniciar sesion</h1>
 
-    <form action="entrar.php" method="post">
+    
+    <form action="sesion-iniciada.php" method="POST">
+        
         <label for="usuario">usuario: <input type="text" name="username" placeholder="Ponga aqui su nombre de usuario"></label>
-        <br>
         <label for="contrasena">Contraseña: <input type="password" name="password" placeholder="Coloque aqui su contraseña"></label>
+        <br>
         <input type="submit" value="iniciar sesion">
+
+
     </form>
 
-    <a href=""><button>Recuperar contraseña</button></a>
-    <a href="registro.php">Registrarse</a>
-
+    <div class="botones">
+        <a href="recuperar.php"><button>Recuperar contraseña</button></a>
+        <a href="registro.php"><button>Registrarse</button></a>
+    </div>
 </body>
 </html>
