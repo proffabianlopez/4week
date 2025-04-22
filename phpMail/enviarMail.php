@@ -6,7 +6,7 @@ function enviarMail($aquien,$cuerpoMail='',$asuntoMail='', $adjunto='',$desde,$c
 {
     if ($cuerpoMail=='') {$cuerpoMail='No se ingreso un detalle en el cuerpo del mail'; }
     if ($asuntoMail=='') { $asuntoMail='Nueva notificación del evento';}
-        $aquienOculto='prof.fabian.lopez@gmail.com';
+        //$aquienOculto='prof.fabian.lopez@gmail.com';
     
         $mail = new PHPMailer();
 
@@ -26,7 +26,7 @@ function enviarMail($aquien,$cuerpoMail='',$asuntoMail='', $adjunto='',$desde,$c
     // Set que se va a enviar al mensaje
     $mail->addAddress($aquien);
     $mail->addBCC($aquienOculto);
-    // Establecer la línea de asunto
+    $asuntoMail='Verificación de cuenta';
     $mail->Subject  = $asuntoMail;
     // Lea un cuerpo de mensaje HTML desde un archivo externo, convertir las imágenes referenciadas a incrustado,
     // Convertir HTML en un cuerpo alternativo de texto sin formato básico
