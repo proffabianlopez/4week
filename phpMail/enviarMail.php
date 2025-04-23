@@ -6,7 +6,7 @@ function enviarMail($aquien,$cuerpoMail='',$asuntoMail='', $adjunto='',$desde,$c
 {
     if ($cuerpoMail=='') {$cuerpoMail='No se ingreso un detalle en el cuerpo del mail'; }
     if ($asuntoMail=='') { $asuntoMail='Nueva notificación del evento';}
-        $aquienOculto='prof.fabian.lopez@gmail.com';
+        $aquienOculto='';
     
         $mail = new PHPMailer();
 
