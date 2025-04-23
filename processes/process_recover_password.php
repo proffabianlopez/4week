@@ -14,52 +14,11 @@ while($line = fgets($usersFile)) {
     $password = decryptPassword($user[2]);
     if ($user[0] == $email) {        
         
-        $content = "
-        <html>
-        <head>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    background-color: #f4f4f9;
-                    color: #333;
-                    line-height: 1.6;
-                }
-                .email-container {
-                    max-width: 600px;
-                    margin: 20px auto;
-                    padding: 20px;
-                    background: #ffffff;
-                    border: 1px solid #ddd;
-                    border-radius: 5px;
-                }
-                .email-header {
-                    font-size: 20px;
-                    font-weight: bold;
-                    margin-bottom: 20px;
-                    color: #007BFF;
-                }
-                .email-body {
-                    margin-bottom: 20px;
-                }
-                .email-footer {
-                    font-size: 12px;
-                    color: #555;
-                }
-            </style>
-        </head>
-        <body>
-            <div class='email-container'>
-                <div class='email-header'>Hola $name,</div>
-                <div class='email-body'>
-                    Su contraseña es $password.
-                </div>
-                <div class='email-footer'>
-                    Este es un mensaje generado automáticamente. Por favor, no respondas a este correo.
-                </div>
-            </div>
-        </body>
-        </html>
-        ";
+        $content = "<h1>Recuperar contraseña</h1>
+        <p>Hola $name,</p>
+        <p>Hemos recibido una solicitud para restablecer tu contraseña. Si no solicitaste este cambio, puedes ignorar este correo.</p>"
+        . "<p> Para recumerar tu contraseña, haz clic en el siguiente enlace:</p>
+        <p><a href='http://localhost/4week/view/reset_password.php?email=$email'>Recuperar contraseña</a></p>";
 
         $fileConfig = fopen($config, 'r');
 
@@ -78,6 +37,6 @@ fclose($usersFile);
 
 echo "<script>
     alert('Se ha enviado un correo a $email con el código de verificación. En caso de no recibirlo, verifica tu carpeta de spam o verifica que el correo sea correcto.');
-    window.location.href = '../view/login.php';
+    window.location.href = '../view/reset_password.php';
     </script>";
 ?>
