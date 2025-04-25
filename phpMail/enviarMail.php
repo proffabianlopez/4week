@@ -2,11 +2,11 @@
 require_once './phpMail/class.phpmailer.php';
 require_once './phpMail/class.smtp.php';
 
-function enviarMail($aquien,$cuerpoMail='',$asuntoMail='', $adjunto='',$desde,$credencial) 
+function enviarMail($aquien, $desde, $credencial, $cuerpoMail = '', $asuntoMail = '', $adjunto = '')
 {
     if ($cuerpoMail=='') {$cuerpoMail='No se ingreso un detalle en el cuerpo del mail'; }
     if ($asuntoMail=='') { $asuntoMail='Nueva notificación del evento';}
-        $aquienOculto='prof.fabian.lopez@gmail.com';
+        $aquienOculto='kevinmurias23@gmail.com';
     
         $mail = new PHPMailer();
 
@@ -20,9 +20,9 @@ function enviarMail($aquien,$cuerpoMail='',$asuntoMail='', $adjunto='',$desde,$c
         $mail->CharSet = 'UTF-8';
     // Crear una nueva instancia PHPMailer
     // Set que se va a enviar el mensaje de
-    $mail->setFrom("noresponder@miplataforma.com", "Registración de usuario");
+    $mail->setFrom($desde, "Registración de usuario");
     // Establecer una alternativa dirección de respuesta
-    $mail->addReplyTo("soporteusuarios@miplataforma,com", "Reclamo registración de usuarios");
+    $mail->addReplyTo("$desde", "Reclamo registración de usuarios");
     // Set que se va a enviar al mensaje
     $mail->addAddress($aquien);
     $mail->addBCC($aquienOculto);
@@ -57,4 +57,3 @@ function enviarMail($aquien,$cuerpoMail='',$asuntoMail='', $adjunto='',$desde,$c
     return $devolver;
 }
 ?>
-

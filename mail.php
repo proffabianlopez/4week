@@ -1,6 +1,6 @@
 <?php
 require_once './phpMail/enviarMail.php';
-$configuracion='config.dat';
+$configuracion='archivos/config.dat';
 $user=$_POST ["visitor_email"];
 $code_verif=cripto_6(8);
 $contenido = '
